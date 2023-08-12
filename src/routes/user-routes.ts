@@ -5,4 +5,4 @@ export const userRouter = express.Router()
 
 userRouter.get("/user/:userId", getUserProfile)
 
-userRouter.get("/user/:userId/details", getUserDetails)
+userRouter.get("/user/", getUserDetails)

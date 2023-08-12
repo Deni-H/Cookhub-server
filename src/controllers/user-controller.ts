@@ -24,17 +24,17 @@ export const getUserDetails = async (
     next: NextFunction
 ) => {
     const uid = res.locals.uid
-    const targetUid = req.params['userId']
-
-    if (uid !== targetUid) return res.status(StatusCode.FORBIDDEN)
-        .json({
-            status: StatusCode.FORBIDDEN,
-            message: StatusMessage.FORBIDDEN
-        })
-
     res.json({
         status: StatusCode.OK,
-        data: await UserService.getUserDetails(targetUid)
+        data: await UserService.getUserDetails(uid)
     })
     next()
+}
+
+export const addUserProfile = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
+
 }
