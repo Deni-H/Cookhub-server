@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from "express"
 import { StatusCode } from "../utils/http-status"
+import * as UserService from "../services/user-service"
 
 export const getUserProfile = async (
     req: Request,
@@ -8,15 +9,11 @@ export const getUserProfile = async (
 ) => {
     const uid = res.locals.uid
     const email = res.locals.email
-    const emailVerified = res.locals.emailVerified
 
+    const targetUid = req.params['userId']
     res.json({
         status: StatusCode.OK,
-        data: {
-            uid: uid,
-            email: email,
-            emailVerified: emailVerified
-        }
+        data: await UserService.getUserProfile(targetUid)
     })
     next()
 }

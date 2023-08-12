@@ -21,5 +21,7 @@ export enum StatusMessage {
     NOT_FOUND = 'Not Found',
     METHOD_NOT_ALLOWED = 'Method Not Allowed',
     INTERNAL_SERVER_ERROR = 'Internal Server Error',
-    SERVICE_UNAVAILABLE = 'Service Unavailable'
-  }
+    SERVICE_UNAVAILABLE = 'Service Unavailable',
+    EMAIL_NOT_VERIFIED = 'Email Not Verified',
+    TOKEN_EXPIRED = 'Token Expired'
+}
