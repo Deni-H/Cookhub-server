@@ -26,5 +26,6 @@ export enum StatusMessage {
     EMAIL_NOT_VERIFIED = 'Email Not Verified',
     TOKEN_EXPIRED = 'Token Expired',
     USERNAME_ALREADY_EXISTS = 'Username Already Exists!',
-    USER_ALREADY_EXISTS = 'User already exists! use PUT method to update user profile'
+    USER_ALREADY_EXISTS = 'User already exists! use PUT method to update user profile',
+    INVALID_JSON_FORMAT = 'Invalid JSON Format'
 }
