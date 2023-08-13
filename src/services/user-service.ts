@@ -54,9 +54,10 @@ export const getUserNameOwner = async (userName: string) => {
     return data.uid as string
 }
 
-export const registerUserName = async (uid: string, userName: string) => {
+export const registerUserName = async (userName: string, uid: string, currentTime: number) => {
     return firestore.collection("user_name").doc(userName).set({
-        uid: uid
+        uid: uid,
+        last_changed: currentTime
     })
 }
 

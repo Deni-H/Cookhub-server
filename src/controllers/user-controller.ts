@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from "express"
 import { StatusCode, StatusMessage } from "../utils/http-status"
 import * as UserService from "../services/user-service"
 import { UserDetails } from "../models/user"
+import { getCurrentTime } from "../utils/util"
 
 export const getUserProfile = async (
     req: Request,
@@ -153,7 +154,9 @@ export const setUserName = async (
 
     if (oldUserName) await UserService.deleteUserName(oldUserName)
 
-    await UserService.registerUserName(uid, userName)
+    const currentTime = getCurrentTime()
+
+    await UserService.registerUserName(userName, uid, currentTime)
 
     const updateResult = await UserService.updateUserName(uid, userName)
     res.json({
