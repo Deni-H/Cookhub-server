@@ -1,12 +1,14 @@
 import express from "express"
-import { addUserProfile, getUserDetails, getUserProfile, setUserName } from "../controllers/user-controller"
+import { addUserProfile, getUserDetails, getUserProfile, setUserName, updateUserProfile } from "../controllers/user-controller"
 
 export const userRouter = express.Router()
 
-userRouter.get("/user/:userId", getUserProfile)
-
 userRouter.get("/user/", getUserDetails)
+
+userRouter.get("/user/:userId", getUserProfile)
 
 userRouter.post("/user/", addUserProfile)
 
-userRouter.post("/user/username", setUserName)
+userRouter.put("/user/", updateUserProfile)
+
+userRouter.post("/user/username/", setUserName)

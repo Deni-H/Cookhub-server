@@ -86,6 +86,35 @@ export const addUserProfile = async (
     next()
 }
 
+export const updateUserProfile = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
+    const uid = res.locals.uid
+    const firstName = req.body.first_name
+    const lastName = req.body.last_name
+    const bio = req.body.bio
+    const profileImage = req.body.profile_image
+
+    const isUserExists = await UserService.isUserExists(uid)
+
+    if (!isUserExists) return res.status(StatusCode.NOT_FOUND).json({
+        status: StatusCode.NOT_FOUND,
+        message: StatusMessage.NOT_FOUND
+    })
+
+    if (firstName) await UserService.updateUserProfile(uid, { first_name: firstName })
+    if (lastName) await UserService.updateUserProfile(uid, { last_name: lastName })
+    if (bio) await UserService.updateUserProfile(uid, { bio: bio })
+    if (profileImage) await UserService.updateUserProfile(uid, { profile_image: profileImage })
+
+    res.json({
+        status: StatusCode.OK,
+        data: await UserService.getUserDetails(uid)
+    })
+}
+
 export const setUserName = async (
     req: Request,
     res: Response,

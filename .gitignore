@@ -1,5 +1,4 @@
 /node_modules
 .env
-.rest
 serviceAccountKey.json
 vim-test.ts

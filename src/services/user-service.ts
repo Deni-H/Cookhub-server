@@ -29,6 +29,10 @@ export const addUserProfile = async (uid: string, user: UserDetails) => {
     return await firestore.collection("users").doc(uid).set(user)
 }
 
+export const updateUserProfile = async (uid: string, user: object) => {
+    return await firestore.collection("users").doc(uid).update(user)
+}
+
 export const isUserExists = async (uid: string) => {
     const doc = await firestore.collection("users").doc(uid).get()
     return doc.exists
