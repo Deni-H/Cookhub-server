@@ -6,7 +6,9 @@ const firestore = firebaseAdmin.firestore()
 export const getUserProfile = async (uid: string): Promise<User> => {
     const user = await getUser(uid) as User
     return {
-        user_name: user.user_name,
+        user_name: {
+            value: user.user_name?.value!
+        },
         first_name: user.first_name,
         last_name: user.last_name,
         bio: user.bio, profile_image: user.profile_image
