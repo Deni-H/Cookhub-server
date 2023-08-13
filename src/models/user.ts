@@ -12,6 +12,6 @@ export interface UserDetails extends User {
     email: string
     user_name?: {
         value: string,
-        last_changed: string
+        last_changed: number
     }
 }

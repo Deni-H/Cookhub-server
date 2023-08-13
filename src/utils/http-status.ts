@@ -9,7 +9,8 @@ export enum StatusCode {
     METHOD_NOT_ALLOWED = 405,
     INTERNAL_SERVER_ERROR = 500,
     SERVICE_UNAVAILABLE = 503,
-    HTTP_CONFLICT = 409
+    HTTP_CONFLICT = 409,
+    TOO_MANY_REQUEST = 429
 }
 
 export enum StatusMessage {
@@ -27,5 +28,6 @@ export enum StatusMessage {
     TOKEN_EXPIRED = 'Token Expired',
     USERNAME_ALREADY_EXISTS = 'Username Already Exists!',
     USER_ALREADY_EXISTS = 'User already exists! use PUT method to update user profile',
-    INVALID_JSON_FORMAT = 'Invalid JSON Format'
+    INVALID_JSON_FORMAT = 'Invalid JSON Format',
+    USERNAME_RECENTLY_CHANGED = 'Username changed recently, wait until 28 days to change again!'
 }

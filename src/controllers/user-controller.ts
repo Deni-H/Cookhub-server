@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from "express"
 import { StatusCode, StatusMessage } from "../utils/http-status"
 import * as UserService from "../services/user-service"
 import { UserDetails } from "../models/user"
-import { getCurrentTime } from "../utils/util"
+import { dayToTimestamp, getCurrentTime } from "../utils/util"
 
 export const getUserProfile = async (
     req: Request,
@@ -140,6 +140,17 @@ export const setUserName = async (
         })
     }
 
+    const userDetails = await UserService.getUserDetails(uid)
+    const oldUserName = userDetails.user_name?.value as string
+    const lastChanged = userDetails.user_name?.last_changed as number
+    const currentTime = getCurrentTime()
+    const changeDelay = dayToTimestamp(28)
+
+    if (currentTime - lastChanged <= changeDelay) return res.status(StatusCode.TOO_MANY_REQUEST).json({
+        status: StatusCode.TOO_MANY_REQUEST,
+        message: StatusMessage.USERNAME_RECENTLY_CHANGED
+    })
+
     const isUserNameExists = await UserService.isUserNameExists(userName)
 
     if (isUserNameExists) {
@@ -149,12 +160,7 @@ export const setUserName = async (
         })
     }
 
-    const userDetails = await UserService.getUserDetails(uid)
-    const oldUserName = userDetails.user_name?.value as string
-
     if (oldUserName) await UserService.deleteUserName(oldUserName)
-
-    const currentTime = getCurrentTime()
 
     await UserService.registerUserName(userName, uid)
 
