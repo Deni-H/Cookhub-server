@@ -1,7 +1,6 @@
 export interface User {
     user_name?: {
-        value: string,
-        last_changed: string
+        value: string
     },
     first_name: string,
     last_name: string,
@@ -11,4 +10,8 @@ export interface User {
 
 export interface UserDetails extends User {
     email: string
+    user_name?: {
+        value: string,
+        last_changed: string
+    }
 }
