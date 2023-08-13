@@ -54,10 +54,9 @@ export const getUserNameOwner = async (userName: string) => {
     return data.uid as string
 }
 
-export const registerUserName = async (userName: string, uid: string, currentTime: number) => {
+export const registerUserName = async (userName: string, uid: string,) => {
     return firestore.collection("user_name").doc(userName).set({
-        uid: uid,
-        last_changed: currentTime
+        uid: uid
     })
 }
 
@@ -65,9 +64,12 @@ export const deleteUserName = async (userName: string) => {
     return firestore.collection("user_name").doc(userName).delete()
 }
 
-export const updateUserName = async (uid: string, userName: string) => {
+export const updateUserName = async (uid: string, userName: string, last_changed: number) => {
     return await firestore.collection("users").doc(uid).update({
-        user_name: userName
+        user_name: {
+            value: userName,
+            last_changed: last_changed
+        }
     })
 }
 

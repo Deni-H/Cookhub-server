@@ -150,15 +150,15 @@ export const setUserName = async (
     }
 
     const userDetails = await UserService.getUserDetails(uid)
-    const oldUserName = userDetails.user_name as string
+    const oldUserName = userDetails.user_name?.value as string
 
     if (oldUserName) await UserService.deleteUserName(oldUserName)
 
     const currentTime = getCurrentTime()
 
-    await UserService.registerUserName(userName, uid, currentTime)
+    await UserService.registerUserName(userName, uid)
 
-    const updateResult = await UserService.updateUserName(uid, userName)
+    const updateResult = await UserService.updateUserName(uid, userName, currentTime)
     res.json({
         status: StatusCode.OK,
         message: updateResult
