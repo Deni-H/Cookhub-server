@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express"
-import { StatusCode, StatusMessage } from "../utils/http-status"
+import { StatusCode, StatusMessage } from "../utils/http-response"
 import * as UserService from "../services/user-service"
 import { UserDetails } from "../models/user"
 import { dayToTimestamp, getCurrentTime } from "../utils/util"

@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express'
 import { verifyIdToken } from '../services/auth-service'
-import { StatusCode, StatusMessage } from '../utils/http-status'
+import { StatusCode, StatusMessage } from '../utils/http-response'
 
 export const checkAuthHeader = (
     req: Request,

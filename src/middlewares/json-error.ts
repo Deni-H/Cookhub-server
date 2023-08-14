@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction, Errback } from "express"
-import { StatusCode, StatusMessage } from "../utils/http-status"
+import { StatusCode, StatusMessage } from "../utils/http-response"
 
 export const jsonErrorMiddleware = async (
     err: any,
