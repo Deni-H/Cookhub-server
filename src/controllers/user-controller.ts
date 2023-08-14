@@ -99,24 +99,16 @@ export const setUserName = async (
     res: Response,
     next: NextFunction
 ) => {
+    const httpReponse = new HttpReponse(res)
+
     const uid = res.locals.uid
     const userName = req.body.user_name as string
 
-    if (!userName) {
-        return res.status(StatusCode.BAD_REQUEST).json({
-            status: StatusCode.BAD_REQUEST,
-            message: StatusMessage.BAD_REQUEST
-        })
-    }
+    if (!userName) return httpReponse.badRequest()
 
     const isUserExists = await UserService.isUserExists(uid)
 
-    if (!isUserExists) {
-        return res.status(StatusCode.NOT_FOUND).json({
-            status: StatusCode.NOT_FOUND,
-            message: StatusMessage.NOT_FOUND
-        })
-    }
+    if (!isUserExists) return httpReponse.notFound()
 
     const userDetails = await UserService.getUserDetails(uid)
     const oldUserName = userDetails.user_name?.value as string
@@ -124,18 +116,14 @@ export const setUserName = async (
     const currentTime = getCurrentTime()
     const changeDelay = dayToTimestamp(28)
 
-    if (currentTime - lastChanged <= changeDelay) return res.status(StatusCode.TOO_MANY_REQUEST).json({
-        status: StatusCode.TOO_MANY_REQUEST,
-        message: StatusMessage.USERNAME_RECENTLY_CHANGED
-    })
+    if (currentTime - lastChanged <= changeDelay) {
+        return httpReponse.tooManyRequest(StatusMessage.USERNAME_RECENTLY_CHANGED)
+    }
 
     const isUserNameExists = await UserService.isUserNameExists(userName)
 
     if (isUserNameExists) {
-        return res.status(StatusCode.HTTP_CONFLICT).json({
-            status: StatusCode.HTTP_CONFLICT,
-            message: StatusMessage.USERNAME_ALREADY_EXISTS
-        })
+        return httpReponse.httpConflict(StatusMessage.USERNAME_ALREADY_EXISTS)
     }
 
     if (oldUserName) await UserService.deleteUserName(oldUserName)
@@ -143,10 +131,7 @@ export const setUserName = async (
     await UserService.registerUserName(userName, uid)
 
     const updateResult = await UserService.updateUserName(uid, userName, currentTime)
-    res.json({
-        status: StatusCode.OK,
-        message: updateResult
-    })
+    httpReponse.ok(updateResult)
 
     next()
 }
