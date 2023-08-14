@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express'
 import { verifyIdToken } from '../services/auth-service'
-import { StatusCode, StatusMessage } from '../utils/http-response'
+import { HttpReponse, StatusMessage } from '../utils/http-response'
 
 export const checkAuthHeader = (
     req: Request,
@@ -8,53 +8,27 @@ export const checkAuthHeader = (
     next: NextFunction
 ) => {
     const authorization = req.headers.authorization
+    const httpReponse = new HttpReponse(res)
 
-    if (!authorization) {
-        return errorResponse(
-            res,
-            StatusCode.UNAUTHORIZED,
-            StatusMessage.UNAUTHORIZED
-        )
-    }
+    if (!authorization) return httpReponse.unauthorized()
 
     verifyIdToken(authorization)
         .then((decodedId) => {
             res.locals.uid = decodedId.uid
             res.locals.email = decodedId.email
             res.locals.emailVerified = decodedId.email_verified
+
             if (!decodedId.email_verified) {
-                return errorResponse(
-                    res,
-                    StatusCode.FORBIDDEN,
-                    StatusMessage.EMAIL_NOT_VERIFIED
-                )
+                return httpReponse.forbidden(StatusMessage.EMAIL_NOT_VERIFIED)
             }
+
             next()
         })
         .catch((reason) => {
             console.log(reason.code)
             if (reason.code === 'auth/id-token-expired') {
-                return errorResponse(
-                    res,
-                    StatusCode.UNAUTHORIZED,
-                    StatusMessage.TOKEN_EXPIRED
-                )
+                return httpReponse.unauthorized(StatusMessage.TOKEN_EXPIRED)
             }
-            return errorResponse(
-                res,
-                StatusCode.UNAUTHORIZED,
-                StatusMessage.UNAUTHORIZED
-            )
+            return httpReponse.unauthorized()
         })
-}
-
-const errorResponse = (
-    res: Response,
-    statusCode: StatusCode,
-    statusMessage: StatusMessage
-) => {
-    return res.status(statusCode).json({
-        status: statusCode,
-        message: statusMessage
-    })
 }
