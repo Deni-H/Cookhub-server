@@ -45,11 +45,6 @@ export const isUserNameExists = async (userName: string) => {
     return doc.exists
 }
 
-/**
- * Caution! Make sure userName exists before get userNameOwner
- * @param userName 
- * @returns 
- */
 export const getUserNameOwner = async (userName: string) => {
     const doc = await firestore.collection("user_name").doc(userName).get()
     const data = doc.data()!
