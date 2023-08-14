@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express"
-import { StatusCode, StatusMessage } from "../utils/http-response"
+import { StatusCode, StatusMessage, HttpReponse } from "../utils/http-response"
 import * as UserService from "../services/user-service"
 import { UserDetails } from "../models/user"
 import { dayToTimestamp, getCurrentTime } from "../utils/util"
@@ -9,20 +9,17 @@ export const getUserProfile = async (
     res: Response,
     next: NextFunction
 ) => {
+    const httpReponse = new HttpReponse(res)
+
     const targetUid = req.params['userId']
     const isUserExists = await UserService.isUserExists(targetUid)
 
-    if (!isUserExists) {
-        return res.status(StatusCode.NOT_FOUND).json({
-            status: StatusCode.NOT_FOUND,
-            message: StatusMessage.NOT_FOUND
-        })
-    }
+    if (!isUserExists) return httpReponse.notFound()
 
-    res.json({
-        status: StatusCode.OK,
-        data: await UserService.getUserProfile(targetUid)
-    })
+    const userProfile = await UserService.getUserProfile(targetUid)
+
+    httpReponse.ok(userProfile)
+
     next()
 }
 
