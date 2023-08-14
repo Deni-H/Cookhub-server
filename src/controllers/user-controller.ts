@@ -19,7 +19,6 @@ export const getUserProfile = async (
     const userProfile = await UserService.getUserProfile(targetUid)
 
     httpReponse.ok(userProfile)
-
     next()
 }
 
@@ -46,6 +45,8 @@ export const addUserProfile = async (
     res: Response,
     next: NextFunction
 ) => {
+    const httpReponse = new HttpReponse(res)
+
     const uid = res.locals.uid
 
     const user: UserDetails = {
@@ -57,25 +58,12 @@ export const addUserProfile = async (
     }
 
     const isUserExists = await UserService.isUserExists(uid)
-    if (isUserExists) return res.status(StatusCode.HTTP_CONFLICT).json({
-        status: StatusCode.HTTP_CONFLICT,
-        message: StatusMessage.USER_ALREADY_EXISTS
-    })
+
+    if (isUserExists) return httpReponse.httpConflict(StatusMessage.USER_ALREADY_EXISTS)
 
     await UserService.addUserProfile(uid, user)
-        .then((result) => {
-            return res.json({
-                status: StatusCode.OK,
-                data: result
-            })
-        })
-        .catch((reason) => {
-            console.log(reason)
-            return res.status(StatusCode.INTERNAL_SERVER_ERROR).json({
-                status: StatusCode.INTERNAL_SERVER_ERROR,
-                message: StatusMessage.INTERNAL_SERVER_ERROR
-            })
-        })
+        .then((result) => httpReponse.created(result))
+        .catch(() => httpReponse.internalServerError())
     next()
 }
 
