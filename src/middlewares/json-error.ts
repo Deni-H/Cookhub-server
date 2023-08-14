@@ -1,5 +1,5 @@
-import { Request, Response, NextFunction, Errback } from "express"
-import { StatusCode, StatusMessage } from "../utils/http-response"
+import { Request, Response, NextFunction } from "express"
+import { HttpReponse, StatusMessage } from "../utils/http-response"
 
 export const jsonErrorMiddleware = async (
     err: any,
@@ -8,11 +8,11 @@ export const jsonErrorMiddleware = async (
     next: NextFunction
 ) => {
 
+    const httpReponse = new HttpReponse(res)
+
     if (err instanceof SyntaxError && 'body' in err) {
-        return res.status(400).json({
-            status: StatusCode.BAD_REQUEST,
-            message: StatusMessage.INVALID_JSON_FORMAT
-        })
+        return httpReponse.badRequest(StatusMessage.INVALID_JSON_FORMAT)
     }
+
     next()
 }

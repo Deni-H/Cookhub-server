@@ -34,7 +34,7 @@ Content-Type: application/json
 Authorization: {{authToken}}
 
 {
-    "bio": "dBio change"
+    "bio": "dBio change",
 }
 
 ###
