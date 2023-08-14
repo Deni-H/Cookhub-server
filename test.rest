@@ -2,7 +2,7 @@
 
 
 ### Fresh token
-GET http://localhost:3000/api/v1/users/user/OP2sLCtkMHUoJLUkgKZkekQVop23
+GET http://localhost:3000/api/v1/users/user/OP2sLCkMHUoJLUkgKZkekQVop23
 Content-Type: application/json
 Authorization: {{authToken}}
 

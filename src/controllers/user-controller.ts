@@ -28,21 +28,16 @@ export const getUserDetails = async (
     res: Response,
     next: NextFunction
 ) => {
-    const uid = res.locals.uid
+    const httpReponse = new HttpReponse(res)
 
+    const uid = res.locals.uid
     const isUserExists = await UserService.isUserExists(uid)
 
-    if (!isUserExists) {
-        return res.status(StatusCode.NOT_FOUND).json({
-            status: StatusCode.NOT_FOUND,
-            message: StatusMessage.NOT_FOUND
-        })
-    }
+    if (!isUserExists) return httpReponse.notFound()
 
-    res.json({
-        status: StatusCode.OK,
-        data: await UserService.getUserDetails(uid)
-    })
+    const userDetails = await UserService.getUserDetails(uid)
+
+    httpReponse.ok(userDetails)
     next()
 }
 
