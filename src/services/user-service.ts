@@ -70,6 +70,60 @@ export const updateUserName = async (uid: string, userName: string, last_changed
     })
 }
 
+/**
+ * Becareful! if the targetUid or uid didn't exists it will automatically creating a new document
+ * Make sure both uid and targetUid exists!
+ * @param uid 
+ * @param targetUid 
+ * @returns 
+ */
+export const followUser = async (uid: string, targetUid: string) => {
+    await firestore
+        .collection("users")
+        .doc(uid)
+        .collection("following")
+        .doc(targetUid)
+        .create({
+            uid: targetUid
+        })
+
+    return await firestore.
+        collection("users")
+        .doc(targetUid)
+        .collection("followers")
+        .doc(uid)
+        .create({
+            uid: uid
+        })
+}
+
+export const unfollowUser = async (uid: string, targetUid: string) => {
+    await firestore
+        .collection("users")
+        .doc(uid)
+        .collection("following")
+        .doc(targetUid)
+        .delete()
+
+    return await firestore.
+        collection("users")
+        .doc(targetUid)
+        .collection("followers")
+        .doc(uid)
+        .delete()
+}
+
+export const isFollowing = async (uid: string, targetUid: string) => {
+    const following = await firestore
+        .collection("users")
+        .doc(uid)
+        .collection("following")
+        .doc(targetUid)
+        .get()
+
+    return following.exists
+}
+
 const getUser = async (uid: string) => {
     const users = await firestore.collection("users").doc(uid).get()
     return users.data()
