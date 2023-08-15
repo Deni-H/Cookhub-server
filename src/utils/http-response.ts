@@ -126,5 +126,6 @@ export enum StatusMessage {
     HTTP_CONFLICT = 'HTTP Conflict',
     TOO_MANY_REQUEST = 'Too Many Request',
     PROFILE_INCOMPLETED = 'Profile Incompleted',
-    ALREADY_FOLLOWING = 'Already Following'
+    ALREADY_FOLLOWING = 'Already Following',
+    NOT_FOLLOWING = 'Not Following'
 }
