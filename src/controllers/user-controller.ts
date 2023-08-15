@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from "express"
+import { Request, Response, NextFunction, response } from "express"
 import { StatusCode, StatusMessage, HttpReponse } from "../utils/http-response"
 import * as UserService from "../services/user-service"
 import { UserDetails } from "../models/user"
@@ -178,6 +178,29 @@ export const unfollowUser = async (
     if (!isFollowing) return httpReponse.badRequest(StatusMessage.NOT_FOLLOWING)
 
     return httpReponse.ok(await UserService.unfollowUser(uid, targetUid))
+
+    next()
+}
+
+export const isFollowing = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
+    const uid = res.locals.uid
+    const targetUid = req.params['userId']
+    const httpReponse = new HttpReponse(res)
+
+    const isUidExists = await UserService.isUserExists(uid)
+    if (!isUidExists) return httpReponse.badRequest(StatusMessage.PROFILE_INCOMPLETED)
+
+    const isTargetUidExists = await UserService.isUserExists(targetUid)
+    if (!isTargetUidExists) return httpReponse.notFound()
+
+    const isFollowing = await UserService.isFollowing(uid, targetUid)
+    return httpReponse.ok({
+        following: isFollowing
+    })
 
     next()
 }

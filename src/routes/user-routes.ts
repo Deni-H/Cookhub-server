@@ -1,5 +1,5 @@
 import express from "express"
-import { addUserProfile, getUserDetails, getUserProfile, setUserName, updateUserProfile, followUser, unfollowUser } from "../controllers/user-controller"
+import { addUserProfile, getUserDetails, getUserProfile, setUserName, updateUserProfile, followUser, unfollowUser, isFollowing } from "../controllers/user-controller"
 
 export const userRouter = express.Router()
 
