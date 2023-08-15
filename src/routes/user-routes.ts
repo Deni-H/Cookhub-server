@@ -16,3 +16,5 @@ userRouter.post("/user/username/", setUserName)
 userRouter.post("/user/:userId/follow", followUser)
 
 userRouter.post("/user/:userId/unfollow", unfollowUser)
+
+userRouter.get("/user/following/:userId", isFollowing)
