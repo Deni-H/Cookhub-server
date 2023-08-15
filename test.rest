@@ -50,3 +50,8 @@ Authorization: {{authToken}}
 POST http://localhost:3000/api/v1/users/user/fEKWMA4TfsSYXmX9LN8LvshNNzy1/follow
 Content-Type: application/json
 Authorization: {{authToken}}
+
+###
+POST http://localhost:3000/api/v1/users/user/fEKWMA4TfsSYXmX9LN8LvshNNzy1/unfollow
+Content-Type: application/json
+Authorization: {{authToken}}
