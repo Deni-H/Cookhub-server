@@ -124,5 +124,7 @@ export enum StatusMessage {
     INVALID_JSON_FORMAT = 'Invalid JSON Format',
     USERNAME_RECENTLY_CHANGED = 'Username changed recently, wait until 28 days to change again!',
     HTTP_CONFLICT = 'HTTP Conflict',
-    TOO_MANY_REQUEST = 'Too Many Request'
+    TOO_MANY_REQUEST = 'Too Many Request',
+    PROFILE_INCOMPLETED = 'Profile Incompleted',
+    ALREADY_FOLLOWING = 'Already Following'
 }

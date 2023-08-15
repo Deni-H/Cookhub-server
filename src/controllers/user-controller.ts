@@ -135,3 +135,26 @@ export const setUserName = async (
 
     next()
 }
+
+export const followUser = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
+    const uid = res.locals.uid
+    const targetUid = req.params['userId']
+    const httpReponse = new HttpReponse(res)
+
+    const isUidExists = await UserService.isUserExists(uid)
+    if (!isUidExists) return httpReponse.badRequest(StatusMessage.PROFILE_INCOMPLETED)
+
+    const isTargetUidExists = await UserService.isUserExists(targetUid)
+    if (!isTargetUidExists) return httpReponse.notFound()
+
+    const isFollowing = await UserService.isFollowing(uid, targetUid)
+    if (isFollowing) return httpReponse.badRequest(StatusMessage.ALREADY_FOLLOWING)
+
+    return httpReponse.ok(await UserService.followUser(uid, targetUid))
+
+    next()
+}

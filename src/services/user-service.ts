@@ -79,19 +79,15 @@ export const updateUserName = async (uid: string, userName: string, last_changed
  */
 export const followUser = async (uid: string, targetUid: string) => {
     await firestore
-        .collection("users")
-        .doc(uid)
-        .collection("following")
-        .doc(targetUid)
+        .collection("users").doc(uid)
+        .collection("following").doc(targetUid)
         .create({
             uid: targetUid
         })
 
-    return await firestore.
-        collection("users")
-        .doc(targetUid)
-        .collection("followers")
-        .doc(uid)
+    return await firestore
+        .collection("users").doc(targetUid)
+        .collection("followers").doc(uid)
         .create({
             uid: uid
         })
@@ -99,26 +95,20 @@ export const followUser = async (uid: string, targetUid: string) => {
 
 export const unfollowUser = async (uid: string, targetUid: string) => {
     await firestore
-        .collection("users")
-        .doc(uid)
-        .collection("following")
-        .doc(targetUid)
+        .collection("users").doc(uid)
+        .collection("following").doc(targetUid)
         .delete()
 
     return await firestore.
-        collection("users")
-        .doc(targetUid)
-        .collection("followers")
-        .doc(uid)
+        collection("users").doc(targetUid)
+        .collection("followers").doc(uid)
         .delete()
 }
 
 export const isFollowing = async (uid: string, targetUid: string) => {
     const following = await firestore
-        .collection("users")
-        .doc(uid)
-        .collection("following")
-        .doc(targetUid)
+        .collection("users").doc(uid)
+        .collection("following").doc(targetUid)
         .get()
 
     return following.exists
