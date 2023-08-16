@@ -94,7 +94,8 @@ export const followUser = async (
         .collection("users").doc(targetUid)
         .collection("followers").doc(uid)
         .create({
-            uid: uid
+            uid: uid,
+            following_at: followingAt
         })
 }
 
@@ -120,6 +121,31 @@ export const isFollowing = async (uid: string, targetUid: string) => {
         .get()
 
     return following.exists
+}
+
+export const getFollowers = async (uid: string, last: string) => {
+    const followers = await firestore
+        .collection("users")
+        .doc(uid)
+        .collection("followers")
+        .orderBy("following_at")
+        .startAfter(last)
+        .limit(2)
+        .get()
+
+    return followers.docs.map((doc) => doc.data())
+}
+
+export const getFirstFollower = async (uid: string) => {
+    const follower = await firestore
+        .collection("users")
+        .doc(uid)
+        .collection("followers")
+        .orderBy("following_at")
+        .limit(1)
+        .get()
+
+    return follower.docs.map((doc) => doc.data())
 }
 
 const getUser = async (uid: string) => {
