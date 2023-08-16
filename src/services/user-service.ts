@@ -79,23 +79,20 @@ export const updateUserName = async (uid: string, userName: string, last_changed
  */
 export const followUser = async (
     uid: string,
-    targetUid: string,
-    followingAt: number
+    targetUid: string
 ) => {
     await firestore
         .collection("users").doc(uid)
         .collection("following").doc(targetUid)
         .create({
-            uid: targetUid,
-            following_at: followingAt
+            uid: targetUid
         })
 
     return await firestore
         .collection("users").doc(targetUid)
         .collection("followers").doc(uid)
         .create({
-            uid: uid,
-            following_at: followingAt
+            uid: uid
         })
 }
 
@@ -141,6 +138,31 @@ export const getFirstFollower = async (uid: string) => {
         .collection("users")
         .doc(uid)
         .collection("followers")
+        .orderBy("uid")
+        .limit(1)
+        .get()
+
+    return follower.docs.map((doc) => doc.data())
+}
+
+export const getFollowing = async (uid: string, last: string) => {
+    const followers = await firestore
+        .collection("users")
+        .doc(uid)
+        .collection("following")
+        .orderBy("uid")
+        .startAfter(last)
+        .limit(10)
+        .get()
+
+    return followers.docs.map((doc) => doc.data())
+}
+
+export const getFirstFollowing = async (uid: string) => {
+    const follower = await firestore
+        .collection("users")
+        .doc(uid)
+        .collection("following")
         .orderBy("uid")
         .limit(1)
         .get()

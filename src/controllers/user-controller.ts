@@ -154,8 +154,7 @@ export const followUser = async (
     const isFollowing = await UserService.isFollowing(uid, targetUid)
     if (isFollowing) return httpReponse.badRequest(StatusMessage.ALREADY_FOLLOWING)
 
-    const currentTime = getCurrentTime()
-    return httpReponse.ok(await UserService.followUser(uid, targetUid, currentTime))
+    return httpReponse.ok(await UserService.followUser(uid, targetUid))
 
     next()
 }
