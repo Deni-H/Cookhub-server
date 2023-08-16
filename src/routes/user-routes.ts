@@ -1,24 +1,24 @@
 import express from "express"
-import { addUserProfile, getUserDetails, getUserProfile, setUserName, updateUserProfile, followUser, unfollowUser, isFollowing, getFollowers, getFollowing } from "../controllers/user-controller"
+import * as UserController from "../controllers/user-controller"
 
 export const userRouter = express.Router()
 
-userRouter.get("/user/", getUserDetails)
+userRouter.get("/user/", UserController.getUserDetails)
 
-userRouter.get("/user/:userId", getUserProfile)
+userRouter.get("/user/:userId", UserController.getUserProfile)
 
-userRouter.post("/user/", addUserProfile)
+userRouter.post("/user/", UserController.addUserProfile)
 
-userRouter.put("/user/", updateUserProfile)
+userRouter.put("/user/", UserController.updateUserProfile)
 
-userRouter.post("/user/username/", setUserName)
+userRouter.post("/user/username/", UserController.setUserName)
 
-userRouter.post("/user/:userId/follow", followUser)
+userRouter.post("/user/:userId/follow", UserController.followUser)
 
-userRouter.post("/user/:userId/unfollow", unfollowUser)
+userRouter.post("/user/:userId/unfollow", UserController.unfollowUser)
 
-userRouter.get("/user/following/:userId", isFollowing)
+userRouter.get("/user/following/:userId", UserController.isFollowing)
 
-userRouter.get("/user/:userId/followers", getFollowers)
+userRouter.get("/user/:userId/followers", UserController.getFollowers)
 
-userRouter.get("/user/:userId/following", getFollowing)
+userRouter.get("/user/:userId/following", UserController.getFollowing)
