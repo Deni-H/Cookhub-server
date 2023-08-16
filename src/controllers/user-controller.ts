@@ -225,3 +225,24 @@ export const getFollowers = async (
     return httpReponse.ok(result)
     next()
 }
+
+export const getFollowing = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
+    const targetUid = req.params['userId']
+    const last = req.query.last as string
+    const httpReponse = new HttpReponse(res)
+
+    const isTargetUidExists = await UserService.isUserExists(targetUid)
+    if (!isTargetUidExists) return httpReponse.notFound()
+
+    let result: FirebaseFirestore.DocumentData[]
+
+    if (last) result = await UserService.getFollowing(targetUid, last)
+    else result = await UserService.getFirstFollowing(targetUid)
+
+    return httpReponse.ok(result)
+    next()
+}
