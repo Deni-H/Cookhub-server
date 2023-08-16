@@ -1,5 +1,5 @@
 import express from "express"
-import { addUserProfile, getUserDetails, getUserProfile, setUserName, updateUserProfile, followUser, unfollowUser, isFollowing } from "../controllers/user-controller"
+import { addUserProfile, getUserDetails, getUserProfile, setUserName, updateUserProfile, followUser, unfollowUser, isFollowing, getFollowers } from "../controllers/user-controller"
 
 export const userRouter = express.Router()
 
@@ -18,3 +18,5 @@ userRouter.post("/user/:userId/follow", followUser)
 userRouter.post("/user/:userId/unfollow", unfollowUser)
 
 userRouter.get("/user/following/:userId", isFollowing)
+
+userRouter.get("/user/:userId/followers", getFollowers)

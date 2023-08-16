@@ -128,9 +128,9 @@ export const getFollowers = async (uid: string, last: string) => {
         .collection("users")
         .doc(uid)
         .collection("followers")
-        .orderBy("following_at")
+        .orderBy("uid")
         .startAfter(last)
-        .limit(2)
+        .limit(10)
         .get()
 
     return followers.docs.map((doc) => doc.data())
@@ -141,7 +141,7 @@ export const getFirstFollower = async (uid: string) => {
         .collection("users")
         .doc(uid)
         .collection("followers")
-        .orderBy("following_at")
+        .orderBy("uid")
         .limit(1)
         .get()
 

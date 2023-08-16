@@ -63,6 +63,11 @@ Content-Type: application/json
 Authorization: {{authToken}}
 
 ###
-GET {{baseUrl}}/users/user/fEKWMA4TfsSYXmX9LN8LvshNNzy1/followers?last=OP2sLCtkMHUoJLUkgKZkekQVop23 
+GET {{baseUrl}}/users/user/fEKWMA4TfsSYXmX9LN8LvshNNzy1/followers
+Content-Type: application/json
+Authorization: {{authToken}}
+
+###
+GET {{baseUrl}}/users/user/fEKWMA4TfsSYXmX9LN8LvshNNzy1/followers?last=2lK3QKUBuP9eRKkUsmtH
 Content-Type: application/json
 Authorization: {{authToken}}
