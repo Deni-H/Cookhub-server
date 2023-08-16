@@ -1,0 +1,57 @@
+@authToken = eyJhbGciOiJSUzI1NiIsImtpZCI6IjYzODBlZjEyZjk1ZjkxNmNhZDdhNGNlMzg4ZDJjMmMzYzIzMDJmZGUiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vY29va2h1Yi1lMGI0NyIsImF1ZCI6ImNvb2todWItZTBiNDciLCJhdXRoX3RpbWUiOjE2OTIyMDc3NDMsInVzZXJfaWQiOiJPUDJzTEN0a01IVW9KTFVrZ0taa2VrUVZvcDIzIiwic3ViIjoiT1Ayc0xDdGtNSFVvSkxVa2dLWmtla1FWb3AyMyIsImlhdCI6MTY5MjIwNzc0NCwiZXhwIjoxNjkyMjExMzQ0LCJlbWFpbCI6ImRlbnloaWxoYW1zeWhAZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsiZGVueWhpbGhhbXN5aEBnbWFpbC5jb20iXX0sInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCJ9fQ.Jsyk3SQdi8Uu-Xpo_9rJ4jRqrFfxYfJr67U6HibFUrQRQrzY5MEGfDtae1sMm3vOibWdLYRdGUGI_1sEryNxP0aXdk5KqhSneuM3czqaz2yG_E7hbG9bPMqhmXSXZZdwuYdnAk9XFuY7y-xDIX0OvU1Bq2cYEtbQlYcArl7Q_dBo23xPLb1weZy4xoo5P885JQULr_hAUjvemcCprL1YYdIqJnXP76PXSYyABtf2JGwiYE5-VNmnMB4reUHLZmbwJ_B7XF05yDQcqdBhq7LKHeKehD4nk4CYNZY2zTWXSJ3FPIGs7WVOV1Glf_PxyNFAIYIPjMqBWKw75r2ZXjxjyQ
+
+@baseUrl = http://localhost:3000/api/v1
+
+###
+POST {{baseUrl}}/recipes/recipe/
+Content-Type: application/json
+Authorization: {{authToken}}
+
+{
+    "title": "Classic Burger",
+    "description": "All-American burger with juicy beef patty",
+    "image": "https://example.com/burger.jpg",
+    "video": "https://example.com/burger.mp4",
+    "cook_time": {
+      "time_unit": 1,
+      "value": 20
+    },
+    "ingredients": {
+      "burger_buns": {
+        "weight_unit": 100,
+        "value": 2
+      },
+      "ground_beef": {
+        "weight_unit": 200,
+        "value": 1
+      },
+      "lettuce": {
+        "weight_unit": 20,
+        "value": 1
+      },
+      "tomato": {
+        "weight_unit": 50,
+        "value": 1
+      },
+      "cheese": {
+        "weight_unit": 30,
+        "value": 1
+      },
+      "onion": {
+        "weight_unit": 20,
+        "value": 1
+      },
+      "pickles": {
+        "weight_unit": 10,
+        "value": 4
+      },
+      "ketchup": {
+        "weight_unit": 10,
+        "value": 1
+      },
+      "mustard": {
+        "weight_unit": 10,
+        "value": 1
+      }
+    }
+  }

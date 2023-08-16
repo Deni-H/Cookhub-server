@@ -3,15 +3,15 @@ import * as UserController from "../controllers/user-controller"
 
 export const userRouter = express.Router()
 
-userRouter.get("/user/", UserController.getUserDetails)
+userRouter.get("/user", UserController.getUserDetails)
 
 userRouter.get("/user/:userId", UserController.getUserProfile)
 
-userRouter.post("/user/", UserController.addUserProfile)
+userRouter.post("/user", UserController.addUserProfile)
 
-userRouter.put("/user/", UserController.updateUserProfile)
+userRouter.put("/user", UserController.updateUserProfile)
 
-userRouter.post("/user/username/", UserController.setUserName)
+userRouter.post("/user/username", UserController.setUserName)
 
 userRouter.post("/user/:userId/follow", UserController.followUser)
 

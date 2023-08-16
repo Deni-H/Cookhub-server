@@ -63,7 +63,7 @@ Content-Type: application/json
 Authorization: {{authToken}}
 
 ###
-GET {{baseUrl}}/users/user/fEKWMA4TfsSYXmX9LN8LvshNNzy1/followers
+GET {{baseUrl}}/users/user/fEKWMA4TfsSYXmX9LN8LvshNNzy1/following
 Content-Type: application/json
 Authorization: {{authToken}}
 

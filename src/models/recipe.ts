@@ -10,8 +10,8 @@ export interface Recipe {
     },
     ingredients: {
         [ingredientName: string]: {
+            weight_unit: number,
             value: number
-            weight_unit: string
         }
     }
 }
