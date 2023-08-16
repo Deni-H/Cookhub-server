@@ -77,12 +77,17 @@ export const updateUserName = async (uid: string, userName: string, last_changed
  * @param targetUid 
  * @returns 
  */
-export const followUser = async (uid: string, targetUid: string) => {
+export const followUser = async (
+    uid: string,
+    targetUid: string,
+    followingAt: number
+) => {
     await firestore
         .collection("users").doc(uid)
         .collection("following").doc(targetUid)
         .create({
-            uid: targetUid
+            uid: targetUid,
+            following_at: followingAt
         })
 
     return await firestore
@@ -93,7 +98,10 @@ export const followUser = async (uid: string, targetUid: string) => {
         })
 }
 
-export const unfollowUser = async (uid: string, targetUid: string) => {
+export const unfollowUser = async (
+    uid: string,
+    targetUid: string,
+) => {
     await firestore
         .collection("users").doc(uid)
         .collection("following").doc(targetUid)

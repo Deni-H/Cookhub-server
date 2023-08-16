@@ -1,5 +1,5 @@
-import { Request, Response, NextFunction, response } from "express"
-import { StatusCode, StatusMessage, HttpReponse } from "../utils/http-response"
+import { Request, Response, NextFunction } from "express"
+import { StatusMessage, HttpReponse } from "../utils/http-response"
 import * as UserService from "../services/user-service"
 import { UserDetails } from "../models/user"
 import { dayToTimestamp, getCurrentTime } from "../utils/util"
@@ -154,7 +154,8 @@ export const followUser = async (
     const isFollowing = await UserService.isFollowing(uid, targetUid)
     if (isFollowing) return httpReponse.badRequest(StatusMessage.ALREADY_FOLLOWING)
 
-    return httpReponse.ok(await UserService.followUser(uid, targetUid))
+    const currentTime = getCurrentTime()
+    return httpReponse.ok(await UserService.followUser(uid, targetUid, currentTime))
 
     next()
 }
