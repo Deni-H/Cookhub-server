@@ -9,6 +9,6 @@ recipeRouter.get("/recipe", RecipeController.getRecipe)
 
 recipeRouter.get("/recipe/:recipeId", RecipeController.getRecipeById)
 
-recipeRouter.get("/recipe/:recipeId/rating")
-
 recipeRouter.post("/recipe/:recipeId/rating")
+
+recipeRouter.get("/recipe/:recipeId/rating")

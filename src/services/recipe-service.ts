@@ -1,3 +1,4 @@
+import { Rating } from "../models/rating"
 import { Recipe } from "../models/recipe"
 import firebaseAdmin from "./firebase-admin"
 
@@ -33,4 +34,8 @@ export const getRecipes = async (last: number) => {
 
 export const getRecipeById = async (recipeId: string) => {
     return await firestore.collection("recipes").doc(recipeId).get()
+}
+
+export const addRating = async (userId: string, recipeId: string, rating: Rating) => {
+    await firestore.collection("recipes").doc(recipeId).collection("ratings").doc(userId).create(rating)
 }
