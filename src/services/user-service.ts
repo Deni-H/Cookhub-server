@@ -170,6 +170,31 @@ export const getFirstFollowing = async (uid: string) => {
     return follower.docs.map((doc) => doc.data())
 }
 
+export const getRecipes = async (uid: string, last: number) => {
+    const recipes = await firestore
+        .collection("users")
+        .doc(uid)
+        .collection("recipes")
+        .orderBy("created_at")
+        .startAfter(last)
+        .limit(10)
+        .get()
+
+    return recipes.docs.map((doc) => doc.data())
+}
+
+export const getFirstPageRecipes = async (uid: string) => {
+    const recipes = await firestore
+        .collection("users")
+        .doc(uid)
+        .collection("recipes")
+        .orderBy("created_at")
+        .limit(10)
+        .get()
+
+    return recipes.docs.map((doc) => doc.data())
+}
+
 const getUser = async (uid: string) => {
     const users = await firestore.collection("users").doc(uid).get()
     return users.data()

@@ -246,3 +246,24 @@ export const getFollowing = async (
     return httpReponse.ok(result)
     next()
 }
+
+export const getRecipes = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
+    const targetUid = req.params['userId']
+    const last = req.query.last
+    const httpReponse = new HttpReponse(res)
+
+    const isTargetUidExists = await UserService.isUserExists(targetUid)
+    if (!isTargetUidExists) return httpReponse.notFound()
+
+    let result: FirebaseFirestore.DocumentData[]
+
+    if (last) result = await UserService.getRecipes(targetUid, Number(last))
+    else result = await UserService.getFirstPageRecipes(targetUid)
+
+    return httpReponse.ok(result)
+    next()
+}
