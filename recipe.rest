@@ -72,3 +72,9 @@ Authorization: {{authToken}}
   "rating": 4.5,
   "review": "Absolutely delicious! The flavors blend together perfectly."
 }
+
+
+###
+GET {{baseUrl}}/recipes/recipe/CS8fmriruCO0iw8TzZq0/rating
+Content-Type: application/json
+Authorization: {{authToken}}

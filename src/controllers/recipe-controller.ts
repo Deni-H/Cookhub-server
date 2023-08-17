@@ -84,3 +84,22 @@ export const addRating = async (
 
     httpReponse.ok(await RecipeService.addRating(userId, recipeId, ratings))
 }
+
+export const getRatings = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
+    const httpReponse = new HttpReponse(res)
+    const recipeId = req.params["recipeId"]
+    const last = req.query.last
+    let result: FirebaseFirestore.DocumentData[]
+
+    const isRecipeExists = await RecipeService.isRecipeExists(recipeId)
+    if (!isRecipeExists) return httpReponse.notFound()
+
+    if (last) result = await RecipeService.getRatings(recipeId, Number(last))
+    else result = await RecipeService.getFirstRatings(recipeId)
+
+    httpReponse.ok(result)
+}
