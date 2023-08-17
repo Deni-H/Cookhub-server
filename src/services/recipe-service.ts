@@ -30,3 +30,8 @@ export const getRecipes = async (last: number) => {
     const recipes = await firestore.collection("recipes").orderBy("created_at").startAfter(last).limit(20).get()
     return recipes.docs.map((doc) => doc.data())
 }
+
+export const getRecipeById = async (recipeId: string) => {
+    const recipe = await firestore.collection("recipes").doc(recipeId).get()
+    return recipe.data()
+}
