@@ -37,5 +37,10 @@ export const getRecipeById = async (recipeId: string) => {
 }
 
 export const addRating = async (userId: string, recipeId: string, rating: Rating) => {
-    await firestore.collection("recipes").doc(recipeId).collection("ratings").doc(userId).create(rating)
+    return await firestore.collection("recipes").doc(recipeId).collection("ratings").doc(userId).create(rating)
+}
+
+export const isRecipeExists = async (recipeId: string) => {
+    const recipe = await firestore.collection("recipes").doc(recipeId).get()
+    return recipe.exists
 }

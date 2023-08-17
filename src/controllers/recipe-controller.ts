@@ -3,6 +3,7 @@ import { StatusMessage, HttpReponse } from "../utils/http-response"
 import * as RecipeService from "../services/recipe-service"
 import { Recipe } from "../models/recipe"
 import { getCurrentTime } from "../utils/util"
+import { Rating } from "../models/rating"
 
 export const addRecipe = async (
     req: Request,
@@ -56,4 +57,30 @@ export const getRecipeById = async (
     const recipe = await RecipeService.getRecipeById(recipeId)
     if (recipe.exists) return httpReponse.ok(recipe.data()!)
     else return httpReponse.notFound()
+}
+
+export const addRating = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
+    const httpReponse = new HttpReponse(res)
+
+    const userId = res.locals.uid as string
+    const recipeId = req.params["recipeId"]
+    const rating = req.body.rating
+    const review = req.body.review
+    const currentTime = getCurrentTime()
+
+    const ratings: Rating = {
+        user_id: userId,
+        rating: rating,
+        review: review,
+        created_at: currentTime
+    }
+
+    const isRecipeExists = await RecipeService.isRecipeExists(recipeId)
+    if (!isRecipeExists) httpReponse.notFound()
+
+    httpReponse.ok(await RecipeService.addRating(userId, recipeId, ratings))
 }
