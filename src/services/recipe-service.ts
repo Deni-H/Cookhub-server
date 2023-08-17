@@ -32,6 +32,5 @@ export const getRecipes = async (last: number) => {
 }
 
 export const getRecipeById = async (recipeId: string) => {
-    const recipe = await firestore.collection("recipes").doc(recipeId).get()
-    return recipe.data()
+    return await firestore.collection("recipes").doc(recipeId).get()
 }

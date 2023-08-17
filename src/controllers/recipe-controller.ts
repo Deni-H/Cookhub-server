@@ -44,3 +44,17 @@ export const getRecipe = async (
 
     httpReponse.ok(result)
 }
+
+export const getRecipeById = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
+    const httpReponse = new HttpReponse(res)
+    const recipeId = req.params["recipeId"]
+    let result: FirebaseFirestore.DocumentData[]
+
+    const recipe = await RecipeService.getRecipeById(recipeId)
+    if (recipe.exists) return httpReponse.ok(recipe.data()!)
+    else return httpReponse.notFound()
+}

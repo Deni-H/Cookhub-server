@@ -57,3 +57,8 @@ Authorization: {{authToken}}
 GET {{baseUrl}}/recipes/recipe?last=1692283390569
 Content-Type: application/json
 Authorization: {{authToken}}
+
+###
+GET {{baseUrl}}/recipes/recipe/CS8fmriruCO0iw8TzZq0
+Content-Type: application/json
+Authorization: {{authToken}}

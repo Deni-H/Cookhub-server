@@ -7,7 +7,7 @@ recipeRouter.post("/recipe", RecipeController.addRecipe)
 
 recipeRouter.get("/recipe", RecipeController.getRecipe)
 
-recipeRouter.get("/recipe/:recipeId")
+recipeRouter.get("/recipe/:recipeId", RecipeController.getRecipeById)
 
 recipeRouter.get("/recipe/:recipeId/rating")
 
