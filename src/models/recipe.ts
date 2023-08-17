@@ -4,6 +4,7 @@ export interface Recipe {
     description: string,
     image: string,
     video?: string,
+    created_at: number,
     cookTime: {
         time_unit: number,
         value: number

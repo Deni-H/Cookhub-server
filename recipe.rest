@@ -1,4 +1,4 @@
-@authToken = eyJhbGciOiJSUzI1NiIsImtpZCI6IjYzODBlZjEyZjk1ZjkxNmNhZDdhNGNlMzg4ZDJjMmMzYzIzMDJmZGUiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vY29va2h1Yi1lMGI0NyIsImF1ZCI6ImNvb2todWItZTBiNDciLCJhdXRoX3RpbWUiOjE2OTIyMDc3NDMsInVzZXJfaWQiOiJPUDJzTEN0a01IVW9KTFVrZ0taa2VrUVZvcDIzIiwic3ViIjoiT1Ayc0xDdGtNSFVvSkxVa2dLWmtla1FWb3AyMyIsImlhdCI6MTY5MjIwNzc0NCwiZXhwIjoxNjkyMjExMzQ0LCJlbWFpbCI6ImRlbnloaWxoYW1zeWhAZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsiZGVueWhpbGhhbXN5aEBnbWFpbC5jb20iXX0sInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCJ9fQ.Jsyk3SQdi8Uu-Xpo_9rJ4jRqrFfxYfJr67U6HibFUrQRQrzY5MEGfDtae1sMm3vOibWdLYRdGUGI_1sEryNxP0aXdk5KqhSneuM3czqaz2yG_E7hbG9bPMqhmXSXZZdwuYdnAk9XFuY7y-xDIX0OvU1Bq2cYEtbQlYcArl7Q_dBo23xPLb1weZy4xoo5P885JQULr_hAUjvemcCprL1YYdIqJnXP76PXSYyABtf2JGwiYE5-VNmnMB4reUHLZmbwJ_B7XF05yDQcqdBhq7LKHeKehD4nk4CYNZY2zTWXSJ3FPIGs7WVOV1Glf_PxyNFAIYIPjMqBWKw75r2ZXjxjyQ
+@authToken = eyJhbGciOiJSUzI1NiIsImtpZCI6IjYzODBlZjEyZjk1ZjkxNmNhZDdhNGNlMzg4ZDJjMmMzYzIzMDJmZGUiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vY29va2h1Yi1lMGI0NyIsImF1ZCI6ImNvb2todWItZTBiNDciLCJhdXRoX3RpbWUiOjE2OTIyODI2MzgsInVzZXJfaWQiOiJPUDJzTEN0a01IVW9KTFVrZ0taa2VrUVZvcDIzIiwic3ViIjoiT1Ayc0xDdGtNSFVvSkxVa2dLWmtla1FWb3AyMyIsImlhdCI6MTY5MjI4MjYzOSwiZXhwIjoxNjkyMjg2MjM5LCJlbWFpbCI6ImRlbnloaWxoYW1zeWhAZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsiZGVueWhpbGhhbXN5aEBnbWFpbC5jb20iXX0sInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCJ9fQ.a7GUbj7kYCxk5ywjsr7Eg0iE_lsmKCbwPnuKs_gA9KjbYlWZt3Vb6pw65WgGWI-y1bst-sjbmvZd9GROAKr7mY5IXhDLJwOhEAPlNx0CdxZDzf_Bn97kdL30rvGbO-VMYSuSc6JmtxZZ-doqitK2tylwU7Y9yyiESgJKrzLMcpnbsme5xhsrpGYz088-bfRvYXv_1iEIbObdzZFPwwvlH1shHjzgYNNc5J5xX5SV9VLKFixIijYEv_ZteRuKfkQ7cNMcC7aFWtsnOJN_LogfYlkrpYARhN2rK2eP2SJNTIikIW5vC95Q4P9MxcCD92Ww1soJLnBfb_yOxld5myFlOg
 
 @baseUrl = http://localhost:3000/api/v1
 
@@ -8,50 +8,52 @@ Content-Type: application/json
 Authorization: {{authToken}}
 
 {
-    "title": "Classic Burger",
-    "description": "All-American burger with juicy beef patty",
-    "image": "https://example.com/burger.jpg",
-    "video": "https://example.com/burger.mp4",
+    "title": "Healthy Oatmeal",
+    "description": "Nutritious oatmeal with fruits and nuts",
+    "image": "https://example.com/oatmeal.jpg",
     "cook_time": {
       "time_unit": 1,
-      "value": 20
+      "value": 10
     },
     "ingredients": {
-      "burger_buns": {
-        "weight_unit": 100,
-        "value": 2
-      },
-      "ground_beef": {
-        "weight_unit": 200,
-        "value": 1
-      },
-      "lettuce": {
-        "weight_unit": 20,
-        "value": 1
-      },
-      "tomato": {
+      "rolled_oats": {
         "weight_unit": 50,
         "value": 1
       },
-      "cheese": {
-        "weight_unit": 30,
+      "milk": {
+        "weight_unit": 150,
         "value": 1
       },
-      "onion": {
+      "banana": {
+        "weight_unit": 100,
+        "value": 1
+      },
+      "berries": {
+        "weight_unit": 50,
+        "value": 0.5
+      },
+      "nuts": {
+        "weight_unit": 30,
+        "value": 0.5
+      },
+      "honey": {
         "weight_unit": 20,
         "value": 1
       },
-      "pickles": {
-        "weight_unit": 10,
-        "value": 4
-      },
-      "ketchup": {
-        "weight_unit": 10,
-        "value": 1
-      },
-      "mustard": {
-        "weight_unit": 10,
+      "cinnamon": {
+        "weight_unit": 2,
         "value": 1
       }
     }
   }
+
+
+###
+GET {{baseUrl}}/recipes/recipe
+Content-Type: application/json
+Authorization: {{authToken}}
+
+###
+GET {{baseUrl}}/recipes/recipe?last=1692283390569
+Content-Type: application/json
+Authorization: {{authToken}}
