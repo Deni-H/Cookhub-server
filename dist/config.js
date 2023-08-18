@@ -6,5 +6,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.serviceAccount = void 0;
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
-const firebaseCert = JSON.parse(process.env.FIREBASE_CERT);
-exports.serviceAccount = firebaseCert;
+const { privateKey } = JSON.parse(process.env.FIREBASE_PRIVATE_KEY);
+exports.serviceAccount = {
+    projectId: process.env.FIREBASE_PROJECT_ID,
+    clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
+    privateKey
+};
