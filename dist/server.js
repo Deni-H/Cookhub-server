@@ -18,5 +18,5 @@ routerV1.use("/users", user_routes_1.userRouter);
 routerV1.use("/recipes", recipe_routes_1.recipeRouter);
 app.use("/api/v1", routerV1);
 app.listen(port, () => {
-    console.log(`Listening at http://localhost:${port}`);
+    console.log(`Listening at PORT: ${port}`);
 });
