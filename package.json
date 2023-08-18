@@ -7,7 +7,7 @@
     "build:watch": "tsc --watch",
     "dev": "nodemon server.ts",
 
-    "build": "tsc",
+    "build": "npm install && tsc",
     "start": "node server.js"
   },
   "keywords": [],
