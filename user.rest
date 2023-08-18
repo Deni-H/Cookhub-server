@@ -72,7 +72,6 @@ GET {{baseUrl}}/users/user/fEKWMA4TfsSYXmX9LN8LvshNNzy1/followers?last=2lK3QKUBu
 Content-Type: application/json
 Authorization: {{authToken}}
 
-
 ###
 GET {{baseUrl}}/users/user/OP2sLCtkMHUoJLUkgKZkekQVop23/recipes
 Content-Type: application/json
