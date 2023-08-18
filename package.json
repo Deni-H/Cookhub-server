@@ -4,9 +4,10 @@
   "description": "",
   "main": "server.ts",
   "scripts": {
-    "build": "tsc --build",
     "build:watch": "tsc --watch",
-    "test": "nodemon server.ts",
+    "dev": "nodemon server.ts",
+
+    "build": "tsc",
     "start": "node dist/server.js"
   },
   "keywords": [],
