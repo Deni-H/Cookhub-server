@@ -2,5 +2,4 @@
 .env
 serviceAccountKey.json
 vim-test.ts
-/dist
 TODO
