@@ -84,7 +84,7 @@ Content-Type: application/json
 Authorization: {{authToken}}
 
 ###
-POST {{baseUrl}}/users/username
+POST {{prodUrl}}/users/username
 Content-Type: application/json
 Authorization: {{authToken}}
 
