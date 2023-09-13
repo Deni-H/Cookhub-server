@@ -136,6 +136,30 @@ export const setUserName = async (
     next()
 }
 
+export const isUserNameExists = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
+    const httpReponse = new HttpReponse(res)
+
+    const userName = req.body.user_name as string
+
+    if (!userName) return httpReponse.badRequest()
+
+    const isUserNameExists = await UserService.isUserNameExists(userName)
+
+    if (isUserNameExists) {
+        return httpReponse.httpConflict(StatusMessage.USERNAME_ALREADY_EXISTS)
+    }
+
+    httpReponse.ok({
+        is_username_exists: isUserNameExists
+    })
+
+    next()
+}
+
 export const followUser = async (
     req: Request,
     res: Response,

@@ -24,3 +24,5 @@ userRouter.get("/user/:userId/followers", UserController.getFollowers)
 userRouter.get("/user/:userId/following", UserController.getFollowing)
 
 userRouter.get("/user/:userId/recipes", UserController.getRecipes)
+
+userRouter.post("/username", UserController.isUserNameExists)
