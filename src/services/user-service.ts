@@ -1,18 +1,24 @@
 import firebaseAdmin from "./firebase-admin"
 import { User, UserDetails } from "../models/user"
+import { response } from "express"
 
 const firestore = firebaseAdmin.firestore()
 
 export const getUserProfile = async (uid: string): Promise<User> => {
     const user = await getUser(uid) as User
-    return {
-        user_name: {
-            value: user.user_name?.value!
-        },
+    const response: User = {
         first_name: user.first_name,
         last_name: user.last_name,
         bio: user.bio, profile_image: user.profile_image
     }
+
+    if (user.user_name) {
+        response.user_name = {
+            value: user.user_name?.value!
+        }
+    }
+
+    return response
 }
 
 export const getUserDetails = async (uid: string): Promise<UserDetails> => {

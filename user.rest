@@ -1,4 +1,4 @@
-@authToken = eyJhbGciOiJSUzI1NiIsImtpZCI6ImFhMDhlN2M3ODNkYjhjOGFjNGNhNzJhZjdmOWRkN2JiMzk4ZjE2ZGMiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiRGVueSBIaWxoYW1zeWFoIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FBY0hUdGQxbHZXcHJLWlh1TDRsak5qMi1pYll3cVB2ZDU1Vk9ndFJuanN6RjlrWXBRPXM5Ni1jIiwiaXNzIjoiaHR0cHM6Ly9zZWN1cmV0b2tlbi5nb29nbGUuY29tL2Nvb2todWItZTBiNDciLCJhdWQiOiJjb29raHViLWUwYjQ3IiwiYXV0aF90aW1lIjoxNjk0NjExMjc2LCJ1c2VyX2lkIjoiT1Ayc0xDdGtNSFVvSkxVa2dLWmtla1FWb3AyMyIsInN1YiI6Ik9QMnNMQ3RrTUhVb0pMVWtnS1prZWtRVm9wMjMiLCJpYXQiOjE2OTQ5NjgxNTAsImV4cCI6MTY5NDk3MTc1MCwiZW1haWwiOiJkZW55aGlsaGFtc3loQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7ImVtYWlsIjpbImRlbnloaWxoYW1zeWhAZ21haWwuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.aEVsdkbOTqBSX-odSUkfFMmpQxMa-fx9DQh3_epqM0u3odehxmEcnnO0Fdx_JLo7nQPFU-E5s3GSwixy3j3qOY9IwkITnprfpPo2y_XvTPAwnRwta5Wriw3uQG1vHUMo-hGQIFRS48wFE6VDrYs5_MDkQLl9tUOgFmiBfW6whIoJk2Z2I8J63AQ1VV7UgV4ibLmWTQr4zeLvrn1crbeexJy-BpU689FPkzYMoVzjlc0j8SV1DBtRa0vhfkXaUZZqdD-FIe2MAJk_8RINHiiLccfOQeuZ76D9YTRnPZqM0NM0x1lAcmFEqPJ5Pc9DedBGKJVC11TEzFSZeODMtnOoWA
+@authToken = eyJhbGciOiJSUzI1NiIsImtpZCI6ImFhMDhlN2M3ODNkYjhjOGFjNGNhNzJhZjdmOWRkN2JiMzk4ZjE2ZGMiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiRGVueSBIaWxoYW1zeWFoIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FBY0hUdGQxbHZXcHJLWlh1TDRsak5qMi1pYll3cVB2ZDU1Vk9ndFJuanN6RjlrWXBRPXM5Ni1jIiwiaXNzIjoiaHR0cHM6Ly9zZWN1cmV0b2tlbi5nb29nbGUuY29tL2Nvb2todWItZTBiNDciLCJhdWQiOiJjb29raHViLWUwYjQ3IiwiYXV0aF90aW1lIjoxNjk0NjExMjc2LCJ1c2VyX2lkIjoiT1Ayc0xDdGtNSFVvSkxVa2dLWmtla1FWb3AyMyIsInN1YiI6Ik9QMnNMQ3RrTUhVb0pMVWtnS1prZWtRVm9wMjMiLCJpYXQiOjE2OTQ5NzM5NzUsImV4cCI6MTY5NDk3NzU3NSwiZW1haWwiOiJkZW55aGlsaGFtc3loQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7ImVtYWlsIjpbImRlbnloaWxoYW1zeWhAZ21haWwuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.GOtshbiVavcK6lHhYF4jHUX8EQBLHZktbkZE7PsFwmRiNWdJc6SwbNUW-C_KcHvroYRz5zQcaR3tDsYotINAJBba_BcIDaLzCeY02mtE7p20c-jaifOgTzFzrnpU1IQKcuXEMbs_zQN1ed2ERylfttsrOfawqlD4Mu_Cu6GxPIWPfRO7sgY9_x93f6EyFBJwjgtmsHu8SWmQLnlKJIm2DS14d1vUHDqYE1IEWAkDGk6Pk1yK4VtJShAYI6z3G-zSThKDYqZkFKMwITPQPw5zlaU9OZF402DcegrJbatv-yY89II61lwe5DD1XsoDaGNCoYhBE_W_vtwR34DLXgqosg
 
 @baseUrl = http://localhost:3000/api/v1
 @prodUrl = https://cookhub.cyclic.cloud/api/v1
@@ -14,7 +14,7 @@ Content-Type: application/json
 Authorization: {{authToken}}
 
 ### 
-GET {{prodUrl}}/users/user/OP2sLCtkMHUoJLUkgKZkekQVop23
+GET {{prodUrl}}/users/user/fEKWMA4TfsSYXmX9LN8LvshNNzy1
 Content-Type: application/json
 Authorization: {{authToken}}
 
@@ -36,7 +36,7 @@ Content-Type: application/json
 Authorization: {{authToken}}
 
 {
-    "first_name": "Alexander"
+    "email": "Alexander"
 }
 
 ###
@@ -49,12 +49,12 @@ Authorization: {{authToken}}
 }
 
 ###
-POST {{baseUrl}}/users/user/follow/OP2sLCtkMHUoJLUkgKZkekQVop23/
+POST {{prodUrl}}/users/user/follow/OP2sLCtkMHUoJLUkgKZkekQVop23/
 Content-Type: application/json
 Authorization: {{authToken}}
 
 ###
-POST {{baseUrl}}/users/user/unfollow/OP2sLCtkMHUoJLUkgKZkekQVop23
+POST {{prodUrl}}/users/user/unfollow/OP2sLCtkMHUoJLUkgKZkekQVop23
 Content-Type: application/json
 Authorization: {{authToken}}
 
@@ -82,6 +82,15 @@ Authorization: {{authToken}}
 GET {{prodUrl}}/users/user/OP2sLCtkMHUoJLUkgKZkekQVop23/recipes?last=1692283474168
 Content-Type: application/json
 Authorization: {{authToken}}
+
+###
+POST {{prodUrl}}/users/user/username
+Content-Type: application/json
+Authorization: {{authToken}}
+
+{
+    "user_name": "denyhilhamsyah"
+}
 
 ###
 POST {{prodUrl}}/users/username
