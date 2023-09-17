@@ -49,12 +49,12 @@ Authorization: {{authToken}}
 }
 
 ###
-POST {{prodUrl}}/users/user/follow/OP2sLCtkMHUoJLUkgKZkekQVop23/
+POST {{baseUrl}}/users/user/follow/OP2sLCtkMHUoJLUkgKZkekQVop23/
 Content-Type: application/json
 Authorization: {{authToken}}
 
 ###
-POST {{prodUrl}}/users/user/unfollow/OP2sLCtkMHUoJLUkgKZkekQVop23
+POST {{baseUrl}}/users/user/unfollow/OP2sLCtkMHUoJLUkgKZkekQVop23
 Content-Type: application/json
 Authorization: {{authToken}}
 
