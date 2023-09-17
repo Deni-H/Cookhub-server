@@ -8,15 +8,15 @@ export class HttpReponse {
     }
 
     ok(data: object) {
-        return this.res.json({ data: data })
+        return this.res.json(data)
     }
 
     created(data: object) {
-        return this.res.status(StatusCode.CREATED).json({ data: data })
+        return this.res.status(StatusCode.CREATED).json(data)
     }
 
     accepted(data: object) {
-        return this.res.status(StatusCode.ACCEPTED).json({ data: data })
+        return this.res.status(StatusCode.ACCEPTED).json(data)
     }
 
     badRequest(message?: string) {
