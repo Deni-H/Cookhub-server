@@ -26,3 +26,5 @@ userRouter.get("/user/following/:userId/", UserController.isFollowing)
 userRouter.post("/user/username/", UserController.setUserName)
 
 userRouter.post("/username/", UserController.isUserNameExists)
+
+    / api / v1 / users / user / unfollow / OP2sLCtkMHUoJLUkgKZkekQVop23

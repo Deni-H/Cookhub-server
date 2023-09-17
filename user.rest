@@ -54,7 +54,7 @@ Content-Type: application/json
 Authorization: {{authToken}}
 
 ###
-POST {{prodUrl}}/users/user/unfollow/OP2sLCtkMHUoJLUkgKZkekQVop23/
+POST {{prodUrl}}/users/user/unfollow/OP2sLCtkMHUoJLUkgKZkekQVop23
 Content-Type: application/json
 Authorization: {{authToken}}
 
