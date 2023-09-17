@@ -169,6 +169,8 @@ export const followUser = async (
     const targetUid = req.params['userId']
     const httpReponse = new HttpReponse(res)
 
+    if (uid === targetUid) return httpReponse.badRequest()
+
     const isUidExists = await UserService.isUserExists(uid)
     if (!isUidExists) return httpReponse.badRequest(StatusMessage.PROFILE_INCOMPLETED)
 

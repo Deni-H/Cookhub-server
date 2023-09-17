@@ -128,4 +128,5 @@ export enum StatusMessage {
     PROFILE_INCOMPLETED = 'Profile Incompleted',
     ALREADY_FOLLOWING = 'Already Following',
     NOT_FOLLOWING = 'Not Following'
+
 }
