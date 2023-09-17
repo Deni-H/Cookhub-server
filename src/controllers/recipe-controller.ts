@@ -20,7 +20,7 @@ export const addRecipe = async (
         description: req.body.description,
         image: req.body.image,
         created_at: currentTime,
-        cookTime: req.body.cook_time,
+        cook_time: req.body.cook_time,
         ingredients: req.body.ingredients
     }
 
